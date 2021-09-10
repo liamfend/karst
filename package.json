@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "boostrap": "lerna bootstrap",
-    "precommit": "lint-staged",
+    "precommit": "echo 'aa' && yarn lint-staged",
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "eslint --cache --fix",
     "lint:css": "eslint --cache --fix",
