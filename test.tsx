@@ -4,7 +4,7 @@ interface IProps {
   a: string;
 }
 
-function test({ a }: IProps): ReactElement {
+function test({ a      }: IProps): ReactElement {
   return <div>{a}</div>;
 }
 
