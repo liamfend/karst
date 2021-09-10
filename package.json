@@ -8,8 +8,7 @@
   "description": "project template",
   "main": "index.js",
   "scripts": {
-   
-    "test-lint":"npx eslint-config-prettier "
+    "test-lint": "npx eslint-config-prettier "
   },
   "repository": {
     "type": "git",

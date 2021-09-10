@@ -1,17 +1,11 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "independent",
-  "command":{
-    "publish": {  
-      "ignoreChanges": [  
-          ".gitignore",
-          "*.log",
-          "*.md"
-      ]
+  "command": {
+    "publish": {
+      "ignoreChanges": [".gitignore", "*.log", "*.md"]
     }
   }
 }
