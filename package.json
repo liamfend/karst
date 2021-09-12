@@ -8,6 +8,8 @@
   "description": "project template",
   "main": "index.js",
   "scripts": {
+    "tsinit": "type",
+    "ladd": "lerna add",
     "boostrap": "lerna bootstrap",
     "precommit": "echo 'aa' && yarn lint-staged",
     "lint": "yarn lint:js && yarn lint:css",
