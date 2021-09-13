@@ -18,7 +18,8 @@
     "url": "git+https://github.com/liamfend/karst.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "esbuild src/index.tsx --minify  --outfile=../out.js"
   },
   "bugs": {
     "url": "https://github.com/liamfend/karst/issues"
