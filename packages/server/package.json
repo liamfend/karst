@@ -18,13 +18,13 @@
     "url": "git+https://github.com/liamfend/karst.git"
   },
   "scripts": {
-    "start": "esbuild ./src/index.ts   --platform=node  --outfile=dev.js && node dev.js",
+    "start1": "esbuild ./src/index.ts   --platform=node  --outfile=index.js ",
+    "start": "ts-node src/index.ts",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/liamfend/karst/issues"
   },
-  "type": "module",
   "dependencies": {
     "express": "^4.17.1"
   },
