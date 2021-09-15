@@ -17,7 +17,8 @@
     "lint:css": "eslint --cache --fix",
     "test-lint": "npx eslint-config-prettier ",
     "prepare": "husky install",
-    "build:core": "lerna run --scope @karst/core build"
+    "build:core": "lerna run --scope @karst/core build",
+    "start": "lerna run --scope @karst/server start --stream"
   },
   "repository": {
     "type": "git",
