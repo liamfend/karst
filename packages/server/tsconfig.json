@@ -3,7 +3,9 @@
     "target": "es5",
     "module": "commonjs",
     "outDir": "out",
-    "sourceMap": true
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "jsx": "preserve" /* Specify what JSX code is generated. */
   }
 }
 //"esModuleInterop": true,

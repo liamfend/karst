@@ -1,15 +1,15 @@
-let test = "aaa";
+import express from "express";
+import SSR from "./ssr";
+const app = express();
+const port = 3000;
 
-console.log(test);
+app.get("/", (req, res) => {
+  res.send(SSR);
+});
+app.get("/user", (req, res) => {
+  res.send("Hello World! user" + req.query["userid"]);
+});
 
-type Person = {
-  a: string;
-  b?: number;
-};
-const person: Person = {
-  a: "aaa",
-};
-console.log(person);
-const m = test + "a";
-test = "33";
-console.log(m + test);
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
