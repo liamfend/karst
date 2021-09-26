@@ -10,8 +10,8 @@
       "name": "ts-node ",
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/packages/server/src/index.ts",
-      "outFiles": ["${workspaceFolder}/packages/server/**/*.js"]
+      "program": "${workspaceFolder}/packages/compiler/src/server.ts",
+      "outFiles": ["${workspaceFolder}/packages/compiler/**/*.js"]
     }
   ]
 }
