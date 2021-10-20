@@ -9,6 +9,7 @@
   "main": "index.js",
   "scripts": {
     "boostrap": "lerna bootstrap",
+    "sc": "lerna run --scope @karst/compiler start ",
     "precommit": "echo 'aa' && yarn lint-staged",
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "eslint --cache --fix",
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/liamfend/karst#readme",
   "devDependencies": {
+    "@types/node": "^16.11.1",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
@@ -38,11 +40,12 @@
     "husky": "^7.0.2",
     "lerna": "^4.0.0",
     "lint-staged": "^11.1.2",
-    "prettier": "2.4.0"
+    "prettier": "2.4.0",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.2"
   },
   "dependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "^4.4.2"
+    "react-dom": "^17.0.2"
   }
 }
