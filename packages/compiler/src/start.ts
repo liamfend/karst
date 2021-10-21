@@ -1,10 +1,11 @@
+import { createKarstServer } from "./server";
+
 const start = async (): Promise<void> => {
-  console.log("a");
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log("aaaaaaaa");
-    }, 20000);
+  const server = createKarstServer({
+    port: 3000,
   });
+  server.listen();
+  console.log("starting port:3000,http://localhost:3000/");
 };
 
 export default start;

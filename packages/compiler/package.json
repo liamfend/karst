@@ -1,17 +1,23 @@
 {
   "name": "@karst/compiler",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "> TODO: description",
   "author": "Liam Li <398389303@qq.com>",
   "homepage": "https://github.com/liamfend/karst/tree/main/packages/compiler#readme",
   "license": "ISC",
-  "main": "lib/compiler.js",
+  "main": "./src/index.ts",
   "directories": {
     "lib": "lib",
-    "test": "__tests__"
+    "bin": "bin",
+    "src": "src"
+  },
+  "bin": {
+    "karst": "./bin/karst.js"
   },
   "files": [
-    "lib"
+    "lib",
+    "bin",
+    "src"
   ],
   "publishConfig": {
     "access": "public"
@@ -22,13 +28,14 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "start": "ts-node ./src/index.ts start"
+    "start": "ts-node ./src/index.ts start "
   },
   "bugs": {
     "url": "https://github.com/liamfend/karst/issues"
   },
   "dependencies": {
-    "commander": "^8.2.0"
+    "commander": "^8.2.0",
+    "finalhandler": "^1.1.2"
   },
   "devDependencies": {
     "ts-node": "^10.3.0",
