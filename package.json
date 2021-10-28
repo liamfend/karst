@@ -10,6 +10,8 @@
   "scripts": {
     "boostrap": "lerna bootstrap",
     "sc": "lerna run --scope @karst/testreact start --stream",
+    "start_test": "lerna run --scope @karst/testreact start_test --stream",
+    "esbuild": "lerna run --scope @karst/testreact esbuild --stream",
     "precommit": "echo 'aa' && yarn lint-staged",
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "eslint --cache --fix",

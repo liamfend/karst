@@ -21,7 +21,9 @@
     "url": "git+https://github.com/liamfend/karst.git"
   },
   "scripts": {
-    "start": "ts-node ../compiler/src/index.ts  start"
+    "start": "ts-node ../compiler/src/index.ts  start",
+    "start_test": "ts-node a.ts",
+    "esbuild": "esbuild ./src/**.tsx --outdir=./dist --sourcemap --bundle"
   },
   "bugs": {
     "url": "https://github.com/liamfend/karst/issues"

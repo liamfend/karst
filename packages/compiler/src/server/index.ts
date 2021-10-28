@@ -3,6 +3,7 @@ import connect, { Server } from "connect";
 import { makeConfig, InternalConfig } from "../config";
 import * as Http from "http";
 import path from "path";
+import * as esbuild from "esbuild";
 
 import finalhandler from "finalhandler";
 import serveStatic from "serve-static";
@@ -25,14 +26,37 @@ const createServer = (internalConfig: InternalConfig) => {
   /**
    * 将来修改位置
    */
-  const serve = serveStatic(path.join(process.cwd()), {
+  const basePath = process.cwd();
+  console.log(`this is cwd` + process.cwd());
+  const serve = serveStatic(basePath, {
     index: ["index.html"],
     setHeaders: (res, p) => {
-      return path.extname(p).endsWith(".tsx")
+      return /[jt?sx]$/.test(path.extname(p))
         ? res.setHeader("Content-Type", "application/javascript")
         : null;
     },
   });
+
+  middlewares.use((req, res, next) => {
+    const file = path.join(basePath, req.url || "");
+    console.log(file);
+    const result = "error~";
+    if (/[jt?sx]$/.test(req.url || "")) {
+      const _result = esbuild.buildSync({
+        entryPoints: [file],
+        format: "esm",
+        write: false,
+        sourcemap: "inline",
+      });
+      console.log(_result);
+      res.setHeader("Content-Type", "application/javascript");
+      res.write(_result.outputFiles[0].text);
+      res.end();
+    } else {
+      next();
+    }
+  });
+
   middlewares.use(serve);
 
   const httpServer = resolveHttpServer(middlewares, config.httpsConfig);
