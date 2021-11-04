@@ -4,6 +4,7 @@ import { makeConfig, InternalConfig } from "../config";
 import * as Http from "http";
 import path from "path";
 import * as esbuild from "esbuild";
+import fs from "fs";
 
 import finalhandler from "finalhandler";
 import serveStatic from "serve-static";
@@ -31,9 +32,9 @@ const createServer = (internalConfig: InternalConfig) => {
   const serve = serveStatic(basePath, {
     index: ["index.html"],
     setHeaders: (res, p) => {
-      return /[jt?sx]$/.test(path.extname(p))
-        ? res.setHeader("Content-Type", "application/javascript")
-        : null;
+      if (/[jt]?s[x]$/.test(path.extname(p))) {
+        return res.setHeader("Content-Type", "application/javascript");
+      }
     },
   });
 
@@ -41,7 +42,7 @@ const createServer = (internalConfig: InternalConfig) => {
     const file = path.join(basePath, req.url || "");
     console.log(file);
     const result = "error~";
-    if (/[jt?sx]$/.test(req.url || "")) {
+    if (/[jt]?sx$/.test(req.url || "")) {
       const _result = esbuild.buildSync({
         entryPoints: [file],
         format: "esm",
@@ -51,6 +52,14 @@ const createServer = (internalConfig: InternalConfig) => {
       console.log(_result);
       res.setHeader("Content-Type", "application/javascript");
       res.write(_result.outputFiles[0].text);
+      res.end();
+    } else if (
+      ((req?.url && req?.url.indexOf("/node_modules/.karst")) ?? -1) > -1 &&
+      !/[tj]s/.test(path.extname(req?.url || ""))
+    ) {
+      req.url = req.url + ".js";
+      res.setHeader("Content-Type", "application/javascript");
+      res.write(fs.readFileSync(path.join(basePath, req.url)));
       res.end();
     } else {
       next();

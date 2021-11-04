@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "ts-node ../compiler/src/index.ts  start",
-    "start_test": "ts-node a.ts",
+    "start_test": "ts-node index.ts",
     "esbuild": "esbuild ./src/**.tsx --outdir=./dist --sourcemap --bundle"
   },
   "bugs": {
